@@ -19,6 +19,9 @@ A continuación se relata las cosas que hay que hacer. Están dispuestas en un o
 	 	* OJO!!! Si se publica un bug que no es real, -2 puntos.
 	 	* Sólo se tendrá en cuenta a la primera persona que encuentre el bug para el +3.
 	 	* OJO!!! Si alguien intenta publicar un bug que ya está publicado, -1 puntos.
+	* Si alguien corrobora que algo que se ha publicado como bug es efectivamente un bug +1 puntos
+	 	* Si no era efectivamente un bug, -1 punto.
+	 	* Sólo se tendrá en cuenta a la primera persona que proponga una solución correcta para poner el +1.
 	* Por cada bug en el cual se proponga solución +1 puntos
 	 	* Si la solución no es correcta, -1 punto.
 	 	* Sólo se tendrá en cuenta a la primera persona que proponga una solución correcta para poner el +1.
