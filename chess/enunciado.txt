@@ -1,34 +1,34 @@
-Esta pr·ctica trata del juego del ajedrez. No hay que implementarlo entero ni mucho menos. Lo que vendr· en el zip, ser·n 3 proyectos del NetBeans.
+Esta pr√°ctica trata del juego del ajedrez. No hay que implementarlo entero ni mucho menos. Lo que viene dentro de esta carpeta del repositorio de pr√°cticas, son 3 proyectos del NetBeans, los cuales son:
 
-	* Una librerÌa con todo lo com˙n a la hora de jugar al ajedrez.
-	* Un proyecto para poder jugar al ajedrez en modo consola.
-	* Un proyecto para poder jugar al ajedrez en modo gr·fico.
+	* Un proyecto de NetBeans con una librer√≠a con todo lo com√∫n a la hora de jugar al ajedrez.
+	* Un proyecto para poder jugar al ajedrez en modo consola el cual usa, evidentemente, el primer proyecto aqu√≠ descrito.
+	* Un proyecto para poder jugar al ajedrez en modo gr√°fico que usa el primer proyecto (la librer√≠a).
 
 Para poder ejecutar tanto el proyecto de consola como el de desktop, tienes que tener los 3 proyectos abiertos en el NetBeans.
 
-A continuaciÛn se relata las cosas que hay que hacer. Est·n enumeradas a modo de sugerencia para poder avanzar lo m·s r·pido posible, pero no tenÈis que seguir el siguiente orden, es sÛlo una sugerencia:
+A continuaci√≥n se relata las cosas que hay que hacer. Est√°n dispuestas en un orden, que a mi modo de ver, es el m√°s favorable para poder avanzar lo m√°s r√°pido posible, pero no ten√©is que seguir el orden que yo propongo, es s√≥lo una sugerencia. Adem√°s, para cada enunciado, est√° puesto los puntos a los que equivale, tened cuidado, pues hay ejercicios que restan puntos. Los enunciados son:
 
-	* +2 puntos por implementar la clase ChessPieceImplementation. Para hacer esto os podÈis ayudar de la clase ChessMovementManager (muy recomendado). Con esto ya podÈis probar el proyecto en modo consola y deberÌais de poder jugar sin problemas.
-	* +1 punto si se comentan todas las funciones de la clase PiecePosition a la perfecciÛn, es decir, que estÈ total y absolutamente claro lo que hacen cada una de sus funciones.
-	* Los caballos no se dibujan bien, de hecho ahora aparecen como cÌrculos. Quien consiga que los caballos salgan como un rect·ngulo y un tri·ngulo +1 punto.
-	* +2 puntos si se implementa el guardar partida y y cargar una partida en el modo gr·fico. Si os fij·is en los java del proyecto, ya hay cÛdigo por ahÌ para leer de un archivo y escribir a un archivo. PodÈis utilizarlo para implementar saveToFile y loadFromFile de la interfaz ChessBoard. Las sugerencias acerca de cÛmo atacar este apartado, las podÈis preguntar y sugerir en el foro de la pr·ctica 4.
-	* Cuando un usuario en modo gr·fico elige una ficha, estarÌa bien que se pintaran de un color determinado aquellas casillas donde puede moverse la ficha seleccionada, para quien haga esto, +2 puntos. Recomiendo encarecidamente implementar esto, pues puede ayudaros en otras cosas.
-	* +1 punto por arreglar la lÛgica de la partida en el modo gr·fico. Si os fij·is no hay ning˙n orden, uno puede mover todas las fichas sin orden de blancas/negras.
-	* +1 punto si se utiliza la IA proporcionada (en el proyecto de NetBeans llamado Chess) de alguna manera para que se pueda jugar contra la m·quina (aunque sea en modo random).
+	* +2 puntos por implementar la clase ChessPieceImplementation. Para hacer esto os pod√©is ayudar de la clase ChessMovementManager (muy recomendado). Con esto ya pod√©is probar el proyecto en modo consola y deber√≠ais de poder jugar sin problemas.
+	* +1 punto si se comentan todas las funciones de la clase PiecePosition a la perfecci√≥n, es decir, que est√© total y absolutamente claro lo que hacen cada una de sus funciones.
+	* Los caballos no se dibujan bien, de hecho ahora aparecen como c√≠rculos. Quien consiga que los caballos salgan como un rect√°ngulo y un tri√°ngulo +1 punto.
+	* +2 puntos si se implementa el guardar partida y y cargar una partida en el modo gr√°fico. Si os fij√°is en los java del proyecto, ya hay c√≥digo por ah√≠ para leer de un archivo y escribir a un archivo. Pod√©is utilizarlo para implementar saveToFile y loadFromFile de la interfaz ChessBoard. Las sugerencias acerca de c√≥mo atacar este apartado, las pod√©is preguntar y sugerir en el foro de la pr√°ctica 4.
+	* Cuando un usuario en modo gr√°fico elige una ficha, estar√≠a bien que se pintaran de un color determinado aquellas casillas donde puede moverse la ficha seleccionada, para quien haga esto, +2 puntos. Recomiendo encarecidamente implementar esto, pues puede ayudaros en otras cosas.
+	* +1 punto por arreglar la l√≥gica de la partida en el modo gr√°fico. Si os fij√°is no hay ning√∫n orden, uno puede mover todas las fichas sin orden de blancas/negras.
+	* +1 punto si se utiliza la IA proporcionada (en el proyecto de NetBeans llamado Chess) de alguna manera para que se pueda jugar contra la m√°quina (aunque sea en modo random).
 	* Por cada bug que se encuentre (y los hay) y se publique en el foro de bugs +3 puntos.
 	 	* OJO!!! Si se publica un bug que no es real, -2 puntos.
-	 	* SÛlo se tendr· en cuenta a la primera persona que encuentre el bug para el +3.
-	 	* OJO!!! Si alguien intenta publicar un bug que ya est· publicado, -1 puntos.
-	* Por cada bug en el cual se proponga soluciÛn +1 puntos
-	 	* Si la soluciÛn no es correcta, -1 punto.
-	 	* SÛlo se tendr· en cuenta a la primera persona que proponga una soluciÛn correcta para poner el +1.
-	 	* Si se proporciona el cÛdigo fuente que arregla el bug, +1 punto.
+	 	* S√≥lo se tendr√° en cuenta a la primera persona que encuentre el bug para el +3.
+	 	* OJO!!! Si alguien intenta publicar un bug que ya est√° publicado, -1 puntos.
+	* Por cada bug en el cual se proponga soluci√≥n +1 puntos
+	 	* Si la soluci√≥n no es correcta, -1 punto.
+	 	* S√≥lo se tendr√° en cuenta a la primera persona que proponga una soluci√≥n correcta para poner el +1.
+	 	* Si se proporciona el c√≥digo fuente que arregla el bug, +1 punto.
 	* El juego no permite enrocarse, si se consigue +1 punto.
 	* El juego no convierte en damas a los peones cuando llegan al otro extremo, si se consigue +1 punto.
 
 
-Si alg˙n proyecto no compila o me sale alguna excepciÛn mientras se ejecuta, la nota er· de 0.
+Si alg√∫n proyecto no compila o me sale alguna excepci√≥n mientras se ejecuta, la nota er√° de 0.
 
-Si alguien detecta algo raro, o necesita aclaraciones, que lo comente en el foro de esta pr·ctica, ..., que hay para rato.
+Si alguien detecta algo raro, o necesita aclaraciones, que lo comente en el foro de esta pr√°ctica, ..., que hay para rato.
 
-El modo de entrega ya lo comentarÈ, no os preocupÈis de eso ahora, pero os adelanto que ser· con github, presumiblemente par el 18 de Abril.
+El modo de entrega ya lo comentar√©, no os preocup√©is de eso ahora, pero os adelanto que ser√° con github, presumiblemente par el 18 de Abril.
