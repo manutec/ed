@@ -22,7 +22,7 @@ public interface ChessBoard {
 	
 	/**
 	 * Esta función devuelve la pieza que hay en una determinada posición en el
-	 * yablero.
+	 * tablero.
 	 * @param position The piece position
 	 * @return A piece
 	 */
@@ -63,6 +63,8 @@ public interface ChessBoard {
 	 * @return true if successfull, false otherwise.
 	 */
 	boolean saveToFile(File location);
+       
+     
 
 	/**
 	 * Esta función abre la partida que hay en un archivo

@@ -4,21 +4,26 @@ public class ChessMovementManager {
 	
 	static PiecePosition[] getAvailablePositionsOfPawn(ChessPiece aPiece, ChessBoard aBoard) {
 		PiecePosition auxPosition, position = aBoard.getPiecePosition(aPiece);
+                PiecePosition reina;
 		ChessMovementHelper result = new ChessMovementHelper();
 		int direction = aPiece.getColor() == ChessPiece.Color.WHITE ? 1 : -1;
 
 		result.addPositionWithDisplacementIfAvaiable(position, aBoard, 0, direction);
 		if (!aPiece.wasMoved())
 			result.addPositionWithDisplacementIfAvaiable(position, aBoard, 0, direction * 2);
+                
 		ChessPiece piece;
 		auxPosition = position.getDisplacedPiece(1, direction);
+               
 		piece = aBoard.getPieceAt(auxPosition);
-		if(piece!= null && piece.getColor() != aPiece.getColor())
+		
+                if(piece!= null && piece.getColor() != aPiece.getColor())
 			result.addPosition(auxPosition, 0, 0);
 
 		auxPosition = position.getDisplacedPiece(-1, direction);
 		piece = aBoard.getPieceAt(auxPosition);
-		
+                
+                
 		return result.getResult();
 	}
 

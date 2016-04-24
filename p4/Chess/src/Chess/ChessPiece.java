@@ -17,10 +17,17 @@ public interface ChessPiece {
     Color getColor();
 	
 	/**
-	 * Esta función devuelve el color de la pieza
+	 * Esta función devuelve el tipo de pieza
 	 * @return 
 	 */
     Type getType();
+    
+    
+        /**
+         * Esta funcion permite cambiar el tipo de pieza
+         * @return 
+         */
+    void setType(Type tip);
 
 	/**
 	 * Cuando el tablero mueve una ficha, llama a esta función para notificarle

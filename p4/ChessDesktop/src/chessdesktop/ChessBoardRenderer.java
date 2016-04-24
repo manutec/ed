@@ -2,11 +2,13 @@ package chessdesktop;
 
 import Chess.ChessPiece;
 import Chess.PiecePosition;
+import java.io.File;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javax.xml.stream.Location;
 
 public class ChessBoardRenderer {
 	final double LEFT_MARGIN = 50;
@@ -35,8 +37,11 @@ public class ChessBoardRenderer {
 	
 	void drawPiece(Canvas canvas, Chess.ChessPiece piece, double minX, double minY, double width, double height) {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		if (piece == movingPiece)
+		if (piece == movingPiece){
 			gc.setFill(Color.GREY);
+                        //moving
+                      //  piece.getAvailablePositions(board);
+                                }
 		else if (piece.getColor() == Chess.ChessPiece.Color.BLACK)
 			gc.setFill(Color.BLACK);
 		else
@@ -79,8 +84,9 @@ public class ChessBoardRenderer {
 				gc.fillOval(minX + width * 0.4, minY, width * 0.2, height);
 				drawTriangle(gc, minX + width * 0.3, minY + height * 0.2, width * 0.4, height * 0.8);
 				break;
-			case KNIGHT:
-				gc.fillOval(minX, minY, width, height);
+			case KNIGHT:				
+                                gc.fillRect(minX, minY, width/2, height);
+                                drawTriangle(gc, minX + width * 0.1, minY , width * 0.8, height * 0.6);
 				break;
 			case PAWN: 
 				drawTriangle(gc, minX, minY + height * 0.3, width, height * 0.7);
@@ -108,7 +114,7 @@ public class ChessBoardRenderer {
 	void draw(Canvas canvas) {
 		Bounds bounds = canvas.getBoundsInLocal();
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		
+                
 		Bounds boardBounds = getBoardBounds(canvas);
 		double width = boardBounds.getWidth() / 8;
 		double height = boardBounds.getHeight() / 8;
@@ -117,12 +123,23 @@ public class ChessBoardRenderer {
 		gc.clearRect(0, 0, bounds.getWidth(), bounds.getHeight());
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if ((i + j) % 2 == 0)
+                            //Para pintar las posiciones que se pueden mover
+                            //Se crea una posicion de cada casilla del tablero
+                            PiecePosition position = new PiecePosition(i,j); 
+                       
+                           
+                             if ((i + j) % 2 == 0)
 					gc.setFill(Color.AQUA);
+                                
 				else
 					gc.setFill(Color.YELLOW);
+                            //Se verifica que se pueda mover la pieza seleccionada y que no sea null
+                            if(movingPiece !=null && movingPiece.canMoveToPosition(position, board))
+                                    gc.setFill(Color.CORAL);
+                            
 				gc.fillRect(boardBounds.getMinX() + i * width, boardBounds.getMinY() + j * height, 
 						boardBounds.getMinX() + (i + 1) * width, boardBounds.getMinY() + (j + 1) * height);
+                                
 			}
 		}
 		
@@ -147,7 +164,7 @@ public class ChessBoardRenderer {
 			PiecePosition position = board.getPiecePosition(piece);
 			int c = position.getColumn();
 			int r = position.getRow();
-
+              
 			double minx = boardBounds.getMinX() + (c + 0.0) * width;
 			double maxx = boardBounds.getMinX() + (c + 1.0) * width;
 			double miny = boardBounds.getMinY() + (r + 0.0) * height;
@@ -187,4 +204,13 @@ public class ChessBoardRenderer {
 	boolean containsKing(ChessPiece.Color aColor) {
 		return board.containsKing(aColor);
 	}
+        
+        
+        void Save(File location){
+            board.saveToFile( location);
+        }
+        
+        void Load(File location){
+            board.loadFromFile(location);
+        }
 }

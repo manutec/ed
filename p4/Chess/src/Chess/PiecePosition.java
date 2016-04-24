@@ -3,7 +3,8 @@ package Chess;
 public class PiecePosition {
 
 	/**
-	 * 
+	 * Funcion que sirve para comprobar que la pieza esta en los limites del tablero
+         * true si esta en los limites
 	 */
 	public static boolean isAvailable(int column, int row) {
 		return column >= 0 && column < 8 && row >= 0 && row < 8;
@@ -22,7 +23,7 @@ public class PiecePosition {
 	}
 
 	/**
-	 * 
+	 * Esta funcion devuelve true si la posicion esta libre
 	 */
 	static boolean isAvailable(PiecePosition position) {
 		if (position == null)
@@ -33,7 +34,7 @@ public class PiecePosition {
 	private int column, row;
 
 	/**
-	 * 
+	 * Constructor que recibe la columna y la fila de la pieza
 	 */
 	public PiecePosition(int column, int row) {
 		this.column = column;
@@ -41,19 +42,25 @@ public class PiecePosition {
 	}
 	
 	/**
-	 * 
+	 * Metodo que devuelve la columna de la pieza
 	 */
 	public int getColumn() {
 		return column;
 	}
 
 	/**
-	 * 
+	 * Devuelve la fila de la pieza
 	 */
 	public int getRow() {
 		return row;
 	}
 	
+        /**
+         * Pone la pieza en la posicion indicada devuelve true si se puede mover a dicha posicion
+         * @param column
+         * @param row
+         * @return 
+         */
 	public boolean setValues(int column, int row) {
 		if (isAvailable(column, row)) {
 			this.column = column;

@@ -1,13 +1,21 @@
 package Chess;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.*;
+import javax.swing.text.Position;
 
 public class ChessBoardImplementation implements ChessBoard {
 
 	ChessPiece	pieces[] = new ChessPiece[8 * 8];
 	
-	public ChessBoardImplementation() {
+	public ChessBoardImplementation() { //m creamos el tablero con las piezas iniciales
 		for (int i = 0; i < 8; i++) {
 			pieces[getPieceIndex(i, 1)] = new ChessPieceImplementation(ChessPiece.Color.WHITE, ChessPiece.Type.PAWN);
 			pieces[getPieceIndex(i, 6)] = new ChessPieceImplementation(ChessPiece.Color.BLACK, ChessPiece.Type.PAWN);
@@ -61,14 +69,14 @@ public class ChessBoardImplementation implements ChessBoard {
 	}
 
 	private	ChessPiece getPiece(int column, int row) {
-		int index = getPieceIndex(column, row);
+		int index = getPieceIndex(column, row);               
 		return pieces[index];
 	}
 
 	@Override
 	public ChessPiece getPieceAt(PiecePosition position) {
 		if (!PiecePosition.isAvailable(position))
-			return null;
+			return null;                
 		return getPiece(position.getColumn(), position.getRow());
 	}
 
@@ -110,12 +118,78 @@ public class ChessBoardImplementation implements ChessBoard {
 
 	@Override
 	public boolean saveToFile(File location) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
+            String[] datos = new String[8*8];
+            int contador=0;
+		if (location != null) {
+			Charset charset = Charset.forName("US-ASCII");             
+                       for(int y=0;y<8;y++){
+                           for(int x=0;x<8;x++){
+                               if(pieces[getPieceIndex(x,y)]!=null)
+                               datos[contador]= pieces[getPieceIndex(x, y)].getColor().toString() + " " + pieces[getPieceIndex(x, y)].getType().toString() ;
+                               else datos[contador]="0";
+                               contador++;
+                           }
+                       }
+                            	
+                        
+			try (BufferedWriter writer = Files.newBufferedWriter(location.toPath(), charset)) {
+                                for(int x=0;x<datos.length;x++){
+                                writer.write(datos[x]);
+                                writer.newLine();
+                                }
+                                
+			} 
+			catch (IOException x) {
+				System.err.format("IOException: %s%n", x);
+			}
+                }
+                return true;
+        }
 
 	@Override
-	public boolean loadFromFile(File location) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-	
+	public boolean loadFromFile(File location){
+            int fila=0;
+            int columna=0;
+         
+           int cont=0;
+           //Se borran las piezas del tablero
+           for(ChessPiece piece:pieces) {
+               pieces[cont]=null;
+           cont++;
+           } 
+            Charset charset = Charset.forName("US-ASCII");
+            //Se lee el fichero
+            try (BufferedReader reader = Files.newBufferedReader(location.toPath(), charset)) {
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+              String[] linea = line.split(" ");
+             //Se crean las piezas blancas
+              if(linea[0].equals("WHITE")){
+               if("PAWN".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.WHITE, ChessPiece.Type.PAWN);
+               else if("ROOK".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.WHITE, ChessPiece.Type.ROOK);
+               else if("KNIGHT".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.WHITE, ChessPiece.Type.KNIGHT);
+               else if("BISHOP".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.WHITE, ChessPiece.Type.BISHOP);
+               else if("KING".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.WHITE, ChessPiece.Type.KING);
+               else if("QUEEN".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.WHITE, ChessPiece.Type.QUEEN);
+              }
+              else if("BLACK".equals(linea[0])){
+                  if("PAWN".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.BLACK, ChessPiece.Type.PAWN);
+                  else if("ROOK".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.BLACK, ChessPiece.Type.ROOK);
+                  else if("KNIGHT".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.BLACK, ChessPiece.Type.KNIGHT);
+                  else if("BISHOP".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.BLACK, ChessPiece.Type.BISHOP);
+                  else if("KING".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.BLACK, ChessPiece.Type.KING);
+                  else if("QUEEN".equals(linea[1])) pieces[getPieceIndex(fila,columna )] = new ChessPieceImplementation(ChessPiece.Color.BLACK, ChessPiece.Type.QUEEN);              
+              }
+            
+              fila++;
+              if(fila>7){
+                  columna++;
+                  fila=0;
+              }
+            }
+            } catch (IOException x) {
+                System.err.format("IOException: %s%n", x);
+            }
+            return true;         	
+        }
 }

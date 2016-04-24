@@ -1,5 +1,6 @@
 package chessdesktop;
 
+import Chess.ChessBoardImplementation;
 import Chess.ChessPiece;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -23,7 +24,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 public class FXMLDocumentController implements Initializable {
 	
 	ChessBoardRenderer board = new ChessBoardRenderer();
-
+        
 	@FXML
 	private Label label;
 	@FXML
@@ -39,17 +40,12 @@ public class FXMLDocumentController implements Initializable {
 	private void handleSaveButtonAction(ActionEvent event) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Save Game");
+                fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Chess Files", "*.chess.xml"));
+                int contador=0;
 		File file = fileChooser.showSaveDialog(null);
 		if (file != null) {
-			Charset charset = Charset.forName("US-ASCII");
-			String s = "hello";
-			try (BufferedWriter writer = Files.newBufferedWriter(file.toPath(), charset)) {
-				writer.write(s, 0, s.length());
-			} 
-			catch (IOException x) {
-				System.err.format("IOException: %s%n", x);
-			}
-		}
+                    board.Save(file);
+                 }		
 	}
 
 	@FXML
@@ -59,12 +55,8 @@ public class FXMLDocumentController implements Initializable {
 		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Chess Files", "*.chess.xml"));
 		File selectedFile = fileChooser.showOpenDialog(null);
 		if (selectedFile != null) {
-			try {
-				Scanner in = new Scanner(selectedFile);
-				
-			} catch (IOException ex) {
-				Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-			}
+			
+                        board.Load(selectedFile);
 			board.draw(canvas);
 		}
 	}
