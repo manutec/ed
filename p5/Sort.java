@@ -188,10 +188,10 @@ public class Sort {
         
     }
     
-    private ArrayList<Integer> ListaAleatoria(int num)
+    private List<Integer> ListaAleatoria(int num)
     {
         Random ran = new Random();
-        ArrayList<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         boolean rep=false;
         int random=0;
         int cont=0;
@@ -215,8 +215,8 @@ public class Sort {
         return list;
     }
     
-    private ArrayList<Integer> ListaOrdenada(int num){
-        ArrayList<Integer> list = new ArrayList<>();
+    private List<Integer> ListaOrdenada(int num){
+        List<Integer> list = new ArrayList<>();
         for(int a=0;a<=num;a++){
             list.add(a); 
         }
@@ -224,9 +224,9 @@ public class Sort {
         return list;
     }
     
-    private ArrayList<Integer> ListaInversa(int num)
+    private List<Integer> ListaInversa(int num)
     {
-        ArrayList<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         for(int a=num;a>=0;a--)
         {
             list.add(a);
@@ -234,9 +234,9 @@ public class Sort {
         return list;       
     }
     
-    private ArrayList<Integer> ListaIgual(int num)
+    private List<Integer> ListaIgual(int num)
     {
-        ArrayList<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         for(int a=0;a<=num;a++)
         {
             list.add(500);        
@@ -347,8 +347,8 @@ public class Sort {
     
     private List<Integer> Merge(List<Integer> lista)
     {
-        List<Integer> izq = new ArrayList<Integer>();
-        List<Integer> der = new ArrayList<Integer>();
+        List<Integer> izq = new ArrayList<>();
+        List<Integer> der = new ArrayList<>();
         int centro;
         if(lista.size()<=1)return lista;
         else

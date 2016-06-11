@@ -5,8 +5,10 @@
  */
 package p5;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -15,269 +17,57 @@ import java.util.LinkedList;
  */
 public class Lists {
 
-     ArrayList<Integer> arraylist ;//Se inicializan las variables
-     LinkedList<Integer> linked;
+     List<Integer> arraylist ;//Se inicializan las variables
+     List<Integer> linked;
+     double timeStart,timeEnd,elapsedTime,milis;
+     double[] resultado;
+     DecimalFormat df = new DecimalFormat("0.00000000"); 
     /**
      * @param args the command line arguments
      */
     
      
     void RunTimes(){
-        double timeStart,timeEnd,elapsedTime,milis;
-        arraylist = new ArrayList<>();//Se inicializan las variables
+        
+        
+        arraylist = new ArrayList<>();//Se inicializan las variables  
         linked = new LinkedList<>();
-        inicializar(); //Se inicializan las listas con 1000 elementos
+        resultado = new double[100];//Ajusta la precision de los resultados a mas valor mas precision
         
+         
         System.out.println("\t\tArrayList\tLinkedList");
-        
-        //Test 1 añadir elemento al final
-        //ArrayList
-        timeStart = System.nanoTime();
-        arraylist.add(1001);
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 1:\t\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.addLast(1001);
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Añadir elemento al final de la lista");
-        
-        //Test 2 añadir elemento al principio
-        //ArrayList
-        timeStart = System.nanoTime();
-        arraylist.add(0, 1002);
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 2:\t\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.addFirst(1002);
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Añadir elemento al principio de la lista");
-        
-        //Test 3 añadir elemento a mitad
-        //ArrayList
-        timeStart = System.nanoTime();
-        arraylist.add(arraylist.size()/2, 1003);
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 3:\t\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.add(linked.size()/2,1003);
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Añadir elemento a mitad de la lista");
-        
-        //Test 4 borrar el elemento al final de la lista
-        //ArrayList
-        timeStart = System.nanoTime();
-        arraylist.remove(arraylist.size()-1);
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 4:\t\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.removeLast();
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Borrar elemento al final de la lista");
-        
-        //Test 5 borrar el elemento al principio
-        //ArrayList
-        timeStart = System.nanoTime();
-        arraylist.remove(0);
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 5:\t\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.removeFirst();
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Borrar elemento al principio de la lista");
-        
-        //Test 6 Borrar el elemento a mitad
-        //ArrayList
-        timeStart = System.nanoTime();
-        arraylist.remove(arraylist.size()/2);
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 6:\t\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.remove(linked.size()/2);
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Borrar elemento a mitad de la lista");
-        
-        //Test 7 Borrar por valor al final
-        //ArrayList
-
-        timeStart = System.nanoTime();
-        arraylist.remove(Integer.valueOf(1000));
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 7:\t\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.remove(Integer.valueOf(1000));
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Borrar por valor al final de la lista");
-        
-        //Test 8 Borrar por valor al principio
-        //ArrayList
-        timeStart = System.nanoTime();
-        arraylist.remove(Integer.valueOf(0));
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 8:\t\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.remove(Integer.valueOf(0));
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Borrar por valor al principio de la lista");
-        
-        //Test 9 Borrar por valor a mitad
-        //ArrayList
-        timeStart = System.nanoTime();
-        arraylist.remove(Integer.valueOf(500));
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 9:\t\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.remove(Integer.valueOf(500));
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Borrar por valor a mitad de la lista");
-        
-        //Test 10 vaciado de la lista
-        //ArrayList
-        timeStart = System.nanoTime();
-        arraylist.clear();
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 10:\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.clear();
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Vaciado de la lista");
-        
-        inicializar(); //Se vuelven a añadir 1000 elementos
-        
-        //Test 11 busqueda de elemento 
-        //ArrayList
-        timeStart = System.nanoTime();
-        arraylist.indexOf(900);
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 11:\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        linked.indexOf(900);
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Busqueda de elemento");
-        
-        //Test 12 busqueda de elemento implementando
-        //ArrayList
-        timeStart = System.nanoTime();
-        for(int a : arraylist){
-           if(a==900){
-            break;
-           } 
-        }
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 12:\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        for(int a : linked){
-           if(a==900){
-            break;
-           } 
-        }
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Busqueda de elemento implementando");
-        
-        //Test 13 busqueda de elemento mediante busqueda binaria
-        //ArrayList
-        timeStart = System.nanoTime();
-        BusquedaBinaria(arraylist,900);
-        timeEnd = System.nanoTime();      
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.print("Test 13:\t"+milis +".ms" );
-        
-        //LinkedList
-        timeStart = System.nanoTime();
-        BusquedaBinaria(linked,900);
-        timeEnd = System.nanoTime();
-        elapsedTime = timeEnd-timeStart;
-        milis = elapsedTime / 1000000.0;
-        System.out.println("\t" +milis + ".ms Busqueda binaria de elemento");
-           
+        System.out.println("Test 01:\t"+df.format(Test01(arraylist))+".ms\t" +df.format(Test01(linked))+ ".ms Añadir elemento al final de la lista");
+        System.out.println("Test 02:\t"+df.format(Test02(arraylist))+".ms\t"+df.format(Test02(linked))+".ms Añadir elemento al principio de la lista");
+        System.out.println("Test 03:\t"+df.format(Test03(arraylist))+".ms\t"+df.format(Test03(linked))+".ms Añadir elemento a mitad de la lista");
+        System.out.println("Test 04:\t"+df.format(Test04(arraylist))+".ms\t"+df.format(Test04(linked))+ ".ms Borrar elemento al final de la lista");
+        System.out.println("Test 05:\t"+df.format(Test05(arraylist))+".ms\t"+df.format(Test05(linked))+ ".ms Borrar elemento al principio de la lista");
+        System.out.println("Test 06:\t"+df.format(Test06(arraylist))+".ms\t"+df.format(Test06(linked))+ ".ms Borrar elemento a mitad de la lista");
+        System.out.println("Test 07:\t"+df.format(Test07(arraylist))+".ms\t"+df.format(Test07(linked))+".ms Borrar por valor al final de la lista");
+        System.out.println("Test 08:\t"+df.format(Test08(arraylist))+".ms\t"+df.format(Test08(linked))+ ".ms Borrar por valor al principio de la lista");
+        System.out.println("Test 09:\t"+df.format(Test09(arraylist))+".ms\t"+df.format(Test09(linked))+ ".ms Borrar por valor a mitad de la lista");
+        System.out.println("Test 10:\t"+df.format(Test10(arraylist))+".ms\t"+df.format(Test10(linked))+ ".ms Vaciado de la lista");
+        System.out.println("Test 11:\t"+df.format(Test11(arraylist))+".ms\t"+df.format(Test11(linked))+ ".ms Busqueda de elemento");
+        System.out.println("Test 12:\t"+df.format(Test12(arraylist))+".ms\t"+df.format(Test12(linked))+ ".ms Busqueda de elemento implementando");
+        System.out.println("Test 13:\t"+df.format(Test13(arraylist))+".ms\t"+df.format(Test13(linked))+ ".ms Busqueda binaria de elemento");
+            
+     
            
     }
     
+   
     
-    private void inicializar(){
-    
-        for(int a=0;a<=1000;a++)//Se les añaden los 1000 valores iniciales
+    private void inicializar(List<Integer> array){
+        array.clear();
+        for(int a=0;a<=999;a++)//Se les añaden los 1000 valores iniciales
         {
-            arraylist.add(a);
-            linked.add(a);
+            
+           array.add(a);
         }
     }
     
-    private int BusquedaBinaria(ArrayList array,int dato)
+    private int BusquedaBinaria(List array,int dato)
     {
-        array = arraylist;
+    
         int inicio = 0;
         int fin = array.size() - 1;
         int pos;
@@ -295,24 +85,267 @@ public class Lists {
         return -1;
     }
     
-    private int BusquedaBinaria(LinkedList array,int dato)
+    
+    private double Test01(List<Integer> list)
     {
-        array = linked;
-        int inicio = 0;
-        int fin = array.size() - 1;
-        int pos;
-        while (inicio <= fin) 
+        //Test 1 añadir elemento al final
+        
+        
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
         {
-            pos = (inicio+fin) / 2;           
-            if ((int)array.get(pos) == dato )
-                return pos;
-            else if ( (int)array.get(pos) < dato ) {
-                inicio = pos+1;
-            } else {
-                fin = pos-1;
-            }
+            
+            inicializar(arraylist);
+            timeStart = System.nanoTime();
+            list.add(1001);
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
         }
-        return -1;
+        milis /= resultado.length;
+        return milis;
+    }
+    
+    private double Test02(List<Integer> list)
+    {
+    
+        //Test 2 añadir elemento al principio
+        
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {
+            inicializar(list);
+            timeStart = System.nanoTime();
+            list.add(0, 1002);
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+            
+        }
+        milis /= resultado.length; 
+        return milis;      
+    }
+    
+    private double Test03(List<Integer> list)
+    {
+        //Test 3 añadir elemento a mitad
+        
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {
+            inicializar(list);
+            timeStart = System.nanoTime();
+            list.add(arraylist.size()/2, 1003);
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis +=resultado[a];
+        }    
+        milis /= resultado.length;
+        return milis;
+        
+    }
+    
+    private double Test04(List<Integer> list)
+    {
+        //Test 4 borrar el elemento al final de la lista
+       
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {
+            inicializar(list);
+            timeStart = System.nanoTime();
+            list.remove(arraylist.size()-1);
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+        }
+        milis /= resultado.length;
+        return milis;
+    }
+    
+    private double Test05(List<Integer> list)
+    {
+        //Test 5 borrar el elemento al principio
+    
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {           
+            inicializar(list);
+            timeStart = System.nanoTime();
+            list.remove(0);
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+        }
+        milis /= resultado.length;       
+        return milis; 
+    }
+    
+    private double Test06(List<Integer> list)
+    {
+        //Test 6 Borrar el elemento a mitad
+      
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {           
+            inicializar(list);
+            timeStart = System.nanoTime();
+            list.remove(arraylist.size()/2);
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+        }
+        milis /= resultado.length;
+        return milis;
+        
+    }
+    
+    private double Test07(List<Integer> list)
+    {
+        //Test 7 Borrar por valor al final
+        
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {           
+            inicializar(list);
+            timeStart = System.nanoTime();
+            list.remove(Integer.valueOf(1000));
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+        }
+        milis /= resultado.length;
+        return milis;
+        
+    }
+                         
+    private double Test08(List<Integer> list)
+    {
+        //Test 8 Borrar por valor al principio
+     
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {           
+            inicializar(list);
+            timeStart = System.nanoTime();
+            list.remove(Integer.valueOf(0));
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+        }
+        milis /= resultado.length;
+        return milis;
+           
+    }
+    
+    private double Test09(List<Integer> list)
+    {
+        //Test 9 Borrar por valor a mitad
+      
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {           
+            inicializar(list);
+            timeStart = System.nanoTime();
+            list.remove(Integer.valueOf(500));
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+        }
+        
+        milis /= resultado.length;
+        return milis;
+    }
+    
+    private double Test10(List<Integer> list)
+    {
+        //Test 10 vaciado de la lista
+     
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {           
+            inicializar(list);
+            timeStart = System.nanoTime();
+            list.clear();
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+        }
+        milis /= resultado.length;
+        return milis;      
+    }
+    
+    private double Test11(List<Integer> list)
+    {
+        //Test 11 busqueda de elemento 
+     
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {           
+            inicializar(list);
+            timeStart = System.nanoTime();
+            list.indexOf(900);
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+        }
+        milis /= resultado.length;
+        return milis;
+             
+    }
+    
+    private double Test12(List<Integer> list)
+    {
+         //Test 12 busqueda de elemento implementando
+        
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {           
+            inicializar(list);
+            timeStart = System.nanoTime();
+            for(int b : list)
+            {
+                if(b==900){
+                break;
+                } 
+            }
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+        }
+        milis /= resultado.length;
+        return milis;   
+    }
+    
+    private double Test13(List<Integer> list)
+    {
+        //Test 13 busqueda de elemento mediante busqueda binaria
+        
+        milis=0;
+        for(int a=0;a<resultado.length;a++)
+        {           
+            inicializar(list);
+            timeStart = System.nanoTime();
+            BusquedaBinaria(list,900);
+            timeEnd = System.nanoTime();      
+            elapsedTime = timeEnd-timeStart;
+            resultado[a] = elapsedTime / 1000000.0;
+            milis += resultado[a];
+        }
+        milis /= resultado.length;
+        return milis;
     }
     
 }
